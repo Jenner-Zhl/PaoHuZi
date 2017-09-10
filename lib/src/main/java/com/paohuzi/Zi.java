@@ -7,8 +7,8 @@ package com.paohuzi;
 
 public class Zi {
     public static final String[] ZI = {
-      "0", "ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­", "ä¸ƒ", "å…«", "ä¹", "å",
-            "å£¹", "è´°", "å", "è‚†", "ä¼", "é™†", "æŸ’", "æŒ", "ç–", "æ‹¾"
+            "0", "Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù", "Æß", "°Ë", "¾Å", "Ê®",
+            "Ò¼", "·¡", "Èş", "ËÁ", "Îé", "Â½", "Æâ", "°Æ", "¾Á", "Ê°"
     };
     private int mId;
 
@@ -38,6 +38,9 @@ public class Zi {
     public int getId() {
         return mId;
     }
+    public int getColor() {
+        return mColor;
+    }
 
     /**
      *
@@ -47,7 +50,7 @@ public class Zi {
     public int[] prefferdCPid() {
         int c = 2;
         int t = mId % 10;
-        if (t == 0) t = 10; // åã€æ‹¾
+        if (t == 0) t = 10; // ????
         if (t == 1) {
             c += 1;
         } else if (t == 10 || t == 9) {

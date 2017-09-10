@@ -2,13 +2,13 @@ package com.paohuzi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 public class PaoHuZi {
 
     private Zi[] mAllZi = new Zi[20];
     private Men[] mAllMen = new Men[7];
-    private Men tempMen;
 
     private int[] mData = {12, 12, 12, 12, 17, 17, 17, 20, 20, 10, 10, 9, 8, 7, 7, 6, 5, 4, 3, 2};
 
@@ -50,7 +50,7 @@ public class PaoHuZi {
             Integer v = mZiAndCount.get(key);
             if (v > 2) {
                 if (v == 4) mNeedMaQue = true;
-                System.out.println("findKan: " + v + "ä¸ª" + key);
+                System.out.println("findKan: " + v + "¸ö" + key);
                 mAllMen[mPointerMen].setZi(key, v);
                 mPointerMen++;
                 if (res == null) {
@@ -67,14 +67,11 @@ public class PaoHuZi {
     }
 
     private boolean TianKou(HashMap<Integer, Integer> ziCount) {
-        System.out.println("TK:" + ziCount);
+        //System.out.println("TK:" + ziCount);
         boolean res = false;
 
         if (mPointerMen == 5 && mNeedMaQue) {
-            boolean result = checkLast2Men(ziCount);
-            /*if(result) {
-                //return true;
-            }*/
+            checkLast2Men(ziCount);
         }
 
         if (mPointerMen == 6) {
@@ -105,7 +102,7 @@ public class PaoHuZi {
     }
 
     private void removeZi(HashMap<Integer, Integer> zc, int... key) {
-        System.out.println("Remove :" + key.toString() + "zzcc:" + zc);
+        //System.out.println("Remove :" + key.toString() + "zzcc:" + zc);
         for (int k : key) {
             //System.out.println("remove : " + k);
             if (zc.get(k) == 1) {
@@ -134,7 +131,7 @@ public class PaoHuZi {
     }
 
     private boolean isMenZi(Set<Integer> integers) {
-        System.out.println("isMenZi: " + integers.size());
+        //System.out.println("isMenZi: " + integers.size());
         int zi = 0;
         for (int i: integers) {
             if ( zi == 0 ) {
@@ -161,8 +158,6 @@ public class PaoHuZi {
             if (ziCount.containsKey(preffercp[i]) && ziCount.containsKey(preffercp[j])) {
                 res[p++] = preffercp[i];
                 res[p++] = preffercp[j];
-            } else {
-                continue;
             }
         }
         return res;
@@ -171,7 +166,7 @@ public class PaoHuZi {
     private int getZi(HashMap<Integer, Integer> ziCount) {
         for(int key = 1; key < 21; key++) {
             if (ziCount.containsKey(key)) {
-                System.out.println(" -------key: " + key);
+                //System.out.println(" -------key: " + key);
                 return key;
             }
         }
@@ -252,7 +247,7 @@ public class PaoHuZi {
         return false;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         PaoHuZi phz = new PaoHuZi();
         phz.initZi(phz.mData);
         phz.TianKou(phz.findKan());
@@ -260,5 +255,16 @@ public class PaoHuZi {
         for (TianKouResult res : phz.mResults) {
             System.out.println(res.toString());
         }
+    }*/
+
+    public static List<TianKouResult> calculate() {
+        PaoHuZi ph = new PaoHuZi();
+        ph.initZi(ph.mData);
+        ph.TianKou(ph.findKan());
+
+        for (TianKouResult res : ph.mResults) {
+            System.out.println(res.toString());
+        }
+        return ph.mResults;
     }
 }
