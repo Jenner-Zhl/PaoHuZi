@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">PaoHuZi</string>
+    <string name="app_name">扯跑胡</string>
+    <string name="calculate">计算</string>
+    <string name="noTianKou">冒添口</string>
 </resources>

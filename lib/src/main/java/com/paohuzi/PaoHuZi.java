@@ -25,6 +25,7 @@ public class PaoHuZi {
             System.err.println("number error");
             return;
         }
+
         for(int i = 0; i < 20; i++) {
             mAllZi[i] = new Zi(data[i]);
             Integer v = mZiAndCount.get(data[i]);
@@ -257,9 +258,14 @@ public class PaoHuZi {
         }
     }*/
 
-    public static List<TianKouResult> calculate() {
+    /**
+     *
+     * @param data must be 20 items of Pai ID
+     * @return
+     */
+    public static List<TianKouResult> calculate(int[] data) {
         PaoHuZi ph = new PaoHuZi();
-        ph.initZi(ph.mData);
+        ph.initZi(data);
         ph.TianKou(ph.findKan());
 
         for (TianKouResult res : ph.mResults) {

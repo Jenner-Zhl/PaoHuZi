@@ -25,14 +25,15 @@ public class MenView extends View {
 
     public MenView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mPaint.setAntiAlias(true);
+        mPaint.setStyle(Paint.Style.STROKE);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (mData != null) {
-            mPaint.setStyle(Paint.Style.STROKE);
-            mPaint.setTextSize(mWidth);
             mPaint.setColor(Constants.COLOR_PAIBIAN);
+            mPaint.setTextSize(mWidth);
             Zi z[] = mData.getZi();
             for (int i=0; i<4; i++) {
                 if(z[3-i] != null) {
