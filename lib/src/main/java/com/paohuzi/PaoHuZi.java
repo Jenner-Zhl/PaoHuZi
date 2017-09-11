@@ -2,6 +2,7 @@ package com.paohuzi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -79,7 +80,13 @@ public class PaoHuZi {
             return checkLastMen(ziCount);
         }
 
+        LinkedList<Integer> keys = new LinkedList<>();
         for (int key : ziCount.keySet()) {
+            keys.add(key);
+        }
+        while (keys.size() > 0){
+            int key = keys.getFirst();
+            keys.remove(Integer.valueOf(key));
             int[] preffercp = new Zi(key).prefferdCPid();
             HashMap<Integer, Integer> zcTemp = (HashMap<Integer, Integer>) ziCount.clone();
             removeZi(zcTemp, key);
@@ -92,6 +99,8 @@ public class PaoHuZi {
                     HashMap<Integer, Integer> zc = (HashMap<Integer, Integer>) ziCount.clone();
                     mAllMen[mPointerMen++].setZi(key, availablecp[i], availablecp[j]);
                     removeZi(zc, key, availablecp[i], availablecp[j]);
+                    keys.remove(Integer.valueOf(availablecp[i]));
+                    keys.remove(Integer.valueOf(availablecp[j]));
                     boolean tk = TianKou(zc);
                     if (tk) res = true;
                     mPointerMen--;

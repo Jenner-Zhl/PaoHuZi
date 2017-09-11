@@ -57,4 +57,22 @@ public class Men {
 
         return m;
     }
+
+    public boolean equalWith3ZiMen(Men m) {
+        int i=0, j=0;
+        do {
+            if (mZis[i].equals(m.getZi()[j])) {
+                i++;
+                j=0;
+            } else {
+                j++;
+            }
+        } while (i<3 && j<3);
+
+        if (i < 3) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
